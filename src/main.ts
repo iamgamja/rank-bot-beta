@@ -1,5 +1,5 @@
 import { dirname, importx } from '@discordx/importer'
-import type { Interaction } from 'discord.js'
+import { ChannelType, Interaction } from 'discord.js'
 import { IntentsBitField } from 'discord.js'
 import { Client } from 'discordx'
 
@@ -27,7 +27,7 @@ export const bot = new Client({
 
 bot.once('ready', async () => {
   // Make sure all guilds are cached
-  // await bot.guilds.fetch();
+  await bot.guilds.fetch()
 
   // 항상 삭제 먼저 하기
   await bot.clearApplicationCommands(...bot.guilds.cache.map((g) => g.id))
@@ -37,6 +37,18 @@ bot.once('ready', async () => {
   await bot.initApplicationCommands()
 
   console.log('Bot started')
+
+  const logchannel = bot.channels.cache.get('1061497104696098836') // log5
+  if (!logchannel) {
+    console.log('no log channel :thinking:')
+    return
+  }
+  if (logchannel.type !== ChannelType.GuildText) {
+    console.log('log channel is not text channel :thinking:')
+    return
+  }
+
+  logchannel.send('start <@526889025894875158>')
 })
 
 bot.on('interactionCreate', (interaction: Interaction) => {
