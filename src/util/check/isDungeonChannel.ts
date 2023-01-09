@@ -1,5 +1,5 @@
 import { TextChannel } from 'discord.js'
-import { getDbData } from './getDb'
+import { getDbData } from '../db/getDb'
 
 export default async function isDungeonChannel(channel: TextChannel) {
   const data = await getDbData('던전 쿨타임')

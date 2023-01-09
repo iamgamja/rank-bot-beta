@@ -1,8 +1,8 @@
 import { GuildMember } from 'discord.js'
 import TEAR from '../data/tear'
 import UserNotFoundError from '../error/UserNotFoundError'
-import getUserData from './db/getUserData'
-import isUser from './db/isUser'
+import getUserData from './getUserData'
+import isUser from './check/isUser'
 import get남은경험치 from './get남은경험치'
 
 export default async function makeProfileString(member: GuildMember) {

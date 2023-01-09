@@ -1,7 +1,7 @@
 import { GuildMember } from 'discord.js'
 import UserNotFoundError from '../error/UserNotFoundError'
-import getUserData from './db/getUserData'
-import isUser from './db/isUser'
+import getUserData from './getUserData'
+import isUser from './check/isUser'
 import get누적레벨 from './get누적레벨'
 
 export default async function get남은경험치(member: GuildMember) {

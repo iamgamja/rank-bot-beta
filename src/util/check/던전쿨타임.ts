@@ -2,8 +2,8 @@ import { GuildMember, TextChannel } from 'discord.js'
 import ChannelIsNotDungeonChannel from '../../error/ChannelIsNotDungeonChannel'
 import UserNotFoundError from '../../error/UserNotFoundError'
 import { getDbData } from '../db/getDb'
-import isDungeonChannel from '../db/isDungeonChannel'
-import isUser from '../db/isUser'
+import isDungeonChannel from './isDungeonChannel'
+import isUser from './isUser'
 
 export default async function can던전쿨타임(member: GuildMember, channel: TextChannel) {
   if (!(await isUser(member))) throw new UserNotFoundError()
