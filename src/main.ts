@@ -1,3 +1,5 @@
+import 'dotenv/config'
+
 import { dirname, importx } from '@discordx/importer'
 import { ChannelType, Interaction } from 'discord.js'
 import { IntentsBitField } from 'discord.js'
