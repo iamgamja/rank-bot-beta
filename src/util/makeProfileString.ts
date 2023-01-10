@@ -1,7 +1,7 @@
 import { GuildMember } from 'discord.js'
 import TEAR from '../data/tear'
 import UserNotFoundError from '../error/UserNotFoundError'
-import getUserData from './getUserData'
+import getUserData from './db/get/getUserData'
 import isUser from './check/isUser'
 import calculate남은경험치 from './calculate남은경험치'
 

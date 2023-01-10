@@ -1,6 +1,6 @@
 import { GuildMember } from 'discord.js'
 import UserNotFoundError from '../error/UserNotFoundError'
-import getUserData from './getUserData'
+import getUserData from './db/get/getUserData'
 import isUser from './check/isUser'
 
 export default async function calculate누적레벨(member: GuildMember) {
