@@ -3,13 +3,13 @@ import TEAR from '../data/tear'
 import UserNotFoundError from '../error/UserNotFoundError'
 import getUserData from './getUserData'
 import isUser from './check/isUser'
-import get남은경험치 from './get남은경험치'
+import calculate남은경험치 from './calculate남은경험치'
 
 export default async function makeProfileString(member: GuildMember) {
   if (!(await isUser(member))) throw new UserNotFoundError()
 
   const userData = await getUserData(member)
-  const 남은경험치 = await get남은경험치(member)
+  const 남은경험치 = await calculate남은경험치(member)
 
   return (
     `${member.displayName}님 (ID: ${userData.id.toString().padStart(6, '0')}) 의 정보:\n` +

@@ -3,7 +3,7 @@ import UserNotFoundError from '../error/UserNotFoundError'
 import getUserData from './getUserData'
 import isUser from './check/isUser'
 
-export default async function get누적레벨(member: GuildMember) {
+export default async function calculate누적레벨(member: GuildMember) {
   if (!(await isUser(member))) throw new UserNotFoundError()
 
   const userData = await getUserData(member)
