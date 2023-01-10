@@ -1,5 +1,6 @@
 import { ApplicationCommandOptionType, CommandInteraction, GuildMember } from 'discord.js'
 import { Discord, Slash, SlashOption } from 'discordx'
+import isUser from '../util/check/isUser'
 import makeProfileString from '../util/makeProfileString'
 
 @Discord()
@@ -16,6 +17,8 @@ export class 프로필 {
     interaction: CommandInteraction
   ) {
     const member = 유저 ?? (interaction.member as GuildMember)
+
+    if (!(await isUser(member))) return await interaction.reply('등록되지 않은 유저입니다.')
 
     await interaction.reply(await makeProfileString(member))
   }

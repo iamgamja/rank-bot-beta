@@ -5,7 +5,7 @@ import isUser from './check/isUser'
 import get누적레벨 from './get누적레벨'
 
 export default async function get남은경험치(member: GuildMember) {
-  if (!isUser(member)) throw new UserNotFoundError()
+  if (!(await isUser(member))) throw new UserNotFoundError()
 
   const userData = await getUserData(member)
 

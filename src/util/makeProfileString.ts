@@ -6,7 +6,7 @@ import isUser from './check/isUser'
 import get남은경험치 from './get남은경험치'
 
 export default async function makeProfileString(member: GuildMember) {
-  if (!isUser(member)) throw new UserNotFoundError()
+  if (!(await isUser(member))) throw new UserNotFoundError()
 
   const userData = await getUserData(member)
   const 남은경험치 = await get남은경험치(member)

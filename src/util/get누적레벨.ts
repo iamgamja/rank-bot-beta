@@ -4,7 +4,7 @@ import getUserData from './getUserData'
 import isUser from './check/isUser'
 
 export default async function get누적레벨(member: GuildMember) {
-  if (!isUser(member)) throw new UserNotFoundError()
+  if (!(await isUser(member))) throw new UserNotFoundError()
 
   const userData = await getUserData(member)
   let tear = userData.티어
