@@ -6,15 +6,17 @@
   "type": "module",
   "main": "build/main.js",
   "scripts": {
-    "build": "tsc",
+    "yab": "node node_modules/add-js-extension/dist/bin.js build --once",
+    "build": "tsc & yarn yab",
+    "start": "node build/main.js",
     "build:changelog": "npx @discordx/changelog --root=src",
     "dev": "ts-node-esm src/main.ts",
-    "start": "node build/main.js",
     "watch": "nodemon --exec ts-node-esm src/main.ts"
   },
   "dependencies": {
     "@discordx/importer": "^1.1.10",
     "@discordx/pagination": "^3.3.1",
+    "add-js-extension": "^1.0.4",
     "discord.js": "^14.6.0",
     "discordx": "^11.4.0",
     "dotenv": "^16.0.3"
