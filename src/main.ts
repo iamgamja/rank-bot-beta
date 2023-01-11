@@ -54,7 +54,7 @@ bot.once('ready', async () => {
     return
   }
 
-  logchannel.send('start <@526889025894875158>')
+  await logchannel.send('start <@526889025894875158>')
 })
 
 bot.on('interactionCreate', (interaction: Interaction) => {
