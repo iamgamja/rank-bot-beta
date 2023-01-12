@@ -9,8 +9,7 @@ import { messageId } from '../../data/messageId'
 export async function getDbMessage(name: dbName) {
   const dbChannel = bot.channels.cache.get('1025653116441464842')
   if (!dbChannel) throw new DbChannelNotFoundError()
-  if (dbChannel.type !== ChannelType.GuildText) throw DbChannelIsNotTextChannelError
-
+  if (dbChannel.type !== ChannelType.GuildText) throw new DbChannelIsNotTextChannelError()
   const msg = await dbChannel.messages.fetch(messageId[name])
   return msg
 }
