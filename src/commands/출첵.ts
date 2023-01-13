@@ -24,7 +24,7 @@ export class 출첵 {
     d.setHours(0)
     d.setDate(d.getDate() + 1)
 
-    await set출첵쿨타임(member, d.getTime().toString())
+    await set출첵쿨타임(member)
 
     const n = 2 ** ((await calculate누적레벨ByUser(member)) - 1) * 10
     await add(member, 'exp', n)
