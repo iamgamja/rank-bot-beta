@@ -16,8 +16,8 @@ export async function setUserData(member: GuildMember, userData: userData) {
       atk=${userData.atk},
       hp=${userData.hp},
       r=${userData.r},
-      atkitem=${userData.atkitem},
-      defitem=${userData.defitem}
+      atkitem="${userData.atkitem}",
+      defitem="${userData.defitem}"
     where userid = "${member.id}"
   `)
 }
