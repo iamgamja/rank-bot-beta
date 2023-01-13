@@ -1,4 +1,6 @@
-export const COOLTIME = {
+import { Snowflake } from 'discord.js'
+
+export const COOLTIME: { [id: Snowflake]: number } = {
   '1025355108382421022': 10,
   '1026111522067460106': 15,
   '1026119448156966992': 30,
@@ -8,4 +10,4 @@ export const COOLTIME = {
   '1026129415102550036': 21600, // 6 * 60 * 60,
   '1032216362103353384': 30,
   '1035476140753703012': 30,
-} as const
+}
