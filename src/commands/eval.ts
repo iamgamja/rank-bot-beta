@@ -1,5 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable unused-imports/no-unused-imports */
 import { ApplicationCommandOptionType, CommandInteraction } from 'discord.js'
 import { Discord, Slash, SlashOption } from 'discordx'
+import query from '../util/query'
 
 @Discord()
 export class Eval {
