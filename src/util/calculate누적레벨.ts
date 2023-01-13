@@ -1,12 +1,13 @@
 import { GuildMember } from 'discord.js'
 import UserNotFoundError from '../error/UserNotFoundError'
-import getUserData from './db/get/getUserData'
+import getUserData from './get/getUserData'
 import isUser from './check/isUser'
-import { 유저정보 } from '../type/db'
+import { userData } from '../type/userData'
 
-export async function calculate누적레벨ByUserData(userData: 유저정보) {
-  let tear = userData.티어
-  let level = userData.레벨
+export async function calculate누적레벨ByUserData(userData: userData) {
+  let tear = userData.tear
+  let level = userData.level
+
   while (tear) {
     tear -= 1
     level += (tear + 1) * 5

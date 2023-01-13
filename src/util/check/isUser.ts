@@ -1,7 +1,8 @@
 import { GuildMember } from 'discord.js'
-import { getDbData } from '../db/getDb'
+import { userData } from '../../type/userData'
+import query from '../query'
 
 export default async function isUser(member: GuildMember) {
-  const data = await getDbData('유저 정보')
-  return member.id in data
+  const res = (await query(`select * from user_data where userid = "${member.id}"`)) as userData[]
+  return res.length !== 0
 }
