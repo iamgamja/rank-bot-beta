@@ -1,1 +1,1 @@
-export type addType = '경험치' | 'R' | '공격력' | '체력'
+export type addType = 'exp' | 'r' | 'atk' | 'hp'
