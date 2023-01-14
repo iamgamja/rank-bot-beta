@@ -10,8 +10,8 @@ import { bot } from '../../main'
 export async function makeProfileStringByUserData(userData: userData) {
   const 남은경험치 = await calculate남은경험치ByUserData(userData)
 
-  const guild = bot.guilds.cache.get('953302487065034785') as Guild
-  const member = guild.members.cache.get(userData.userid) as GuildMember
+  const guild = (await bot.guilds.fetch('953302487065034785')) as Guild
+  const member = (await guild.members.fetch(userData.userid)) as GuildMember
 
   return (
     `${member.displayName}님 (ID: ${userData.id.toString().padStart(6, '0')}) 의 정보:\n` +
