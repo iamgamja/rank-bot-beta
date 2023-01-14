@@ -16,6 +16,8 @@ export default async function set출첵쿨타임(member: GuildMember) {
   d.setHours(0)
   d.setDate(d.getDate() + 1)
 
+  d.setHours(d.getHours() - 9)
+
   const newcooltime = d.getTime()
 
   await query(`
