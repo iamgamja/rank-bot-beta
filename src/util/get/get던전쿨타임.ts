@@ -3,12 +3,16 @@ import ChannelIsNotDungeonChannelError from '../../error/ChannelIsNotDungeonChan
 import UserNotFoundError from '../../error/UserNotFoundError'
 import isDungeonChannel from '../check/isDungeonChannel'
 import isUser from '../check/isUser'
-import get던전쿨타임 from '../get/get던전쿨타임'
+import query from '../query'
 
-export default async function can던전쿨타임(member: GuildMember, channel: TextChannel) {
+export default async function get던전쿨타임(member: GuildMember, channel: TextChannel) {
   if (!(await isUser(member))) throw new UserNotFoundError()
   if (!isDungeonChannel(channel)) throw new ChannelIsNotDungeonChannelError()
 
-  const cooltime = +(await get던전쿨타임(member, channel))
-  return cooltime < Date.now()
+  const res = (await query(`select * from dungeon_cooltime where channelid="${channel.id}" and userid="${member.id}"`)) as unknown as string[]
+
+  if (res.length === 0) return '0'
+
+  const cooltime = res[0]
+  return cooltime
 }

@@ -1,9 +1,9 @@
 import { GuildMember } from 'discord.js'
-import TEAR from '../data/tear'
-import UserNotFoundError from '../error/UserNotFoundError'
-import getUserData from './get/getUserData'
-import isUser from './check/isUser'
-import calculate남은경험치 from './calculate남은경험치'
+import TEAR from '../../data/tear'
+import UserNotFoundError from '../../error/UserNotFoundError'
+import getUserData from '../get/getUserData'
+import isUser from '../check/isUser'
+import calculate남은경험치 from '../calculate남은경험치'
 
 export default async function makeProfileString(member: GuildMember) {
   if (!(await isUser(member))) throw new UserNotFoundError()
