@@ -2,7 +2,7 @@ import { ApplicationCommandOptionType, CommandInteraction, GuildMember } from 'd
 import { Discord, Slash, SlashOption } from 'discordx'
 import block from '../util/block'
 import isUser from '../util/check/isUser'
-import makeProfileString from '../util/makeString/makeProfileString'
+import { makeProfileStringByUser } from '../util/makeString/makeProfileString'
 
 @Discord()
 export class 프로필 {
@@ -21,6 +21,6 @@ export class 프로필 {
 
     if (!(await isUser(member))) return await block(interaction, '등록되지 않음', null)
 
-    await interaction.reply(await makeProfileString(member))
+    await interaction.reply(await makeProfileStringByUser(member))
   }
 }
