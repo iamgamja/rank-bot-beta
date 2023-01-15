@@ -11,6 +11,7 @@ const BlockedString: { [type in BlockedType]: string } = {
   '출첵 쿨타임': '쿨타임을 기다려주세요.',
   '도박 쿨타임': '쿨타임을 기다려주세요.',
   '던전 쿨타임': '쿨타임을 기다려주세요.',
+  '이미 등록됨': '이미 등록되었습니다.',
 }
 
 const BlockedSubString = {
