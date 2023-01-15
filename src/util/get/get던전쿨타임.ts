@@ -9,10 +9,14 @@ export default async function get던전쿨타임(member: GuildMember, channel: T
   if (!(await isUser(member))) throw new UserNotFoundError()
   if (!isDungeonChannel(channel)) throw new ChannelIsNotDungeonChannelError()
 
-  const res = (await query(`select * from dungeon_cooltime where channelid="${channel.id}" and userid="${member.id}"`)) as unknown as string[]
+  const res = (await query(`select * from dungeon_cooltime where channelid="${channel.id}" and userid="${member.id}"`)) as unknown as {
+    channelid: string
+    userid: string
+    cooltime: string
+  }[]
 
   if (res.length === 0) return '0'
 
-  const cooltime = res[0]
+  const cooltime = res[0].cooltime
   return cooltime
 }
