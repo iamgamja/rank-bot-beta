@@ -15,6 +15,8 @@ const BlockedString: { [type in BlockedType]: string } = {
   '배팅 단위가 맞지 않음': '배팅은 10 R 단위로 가능합니다.',
   '배팅 금액이 음수': '배팅 금액은 음수일 수 없습니다.',
   '재화 부족': 'R이 부족합니다.',
+  '경험치 부족': '경험치가 부족합니다.',
+  '이미 구매함': '이미 구매한 아이템입니다.',
 }
 
 const BlockedSubString = {

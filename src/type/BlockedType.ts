@@ -9,5 +9,7 @@ export const BlockedType = [
   '배팅 단위가 맞지 않음',
   '재화 부족',
   '배팅 금액이 음수',
+  '경험치 부족',
+  '이미 구매함',
 ] as const
 export type BlockedType = (typeof BlockedType)[number]
