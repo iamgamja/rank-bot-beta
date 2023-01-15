@@ -17,12 +17,14 @@ export class 출첵 {
     if (!(await isUser(member))) return await block(interaction, '등록되지 않음', null)
     if (!(await can출첵쿨타임(member))) return await block(interaction, '출첵 쿨타임', await get출첵쿨타임(member))
 
+    await interaction.deferReply()
+
     await set출첵쿨타임(member)
 
     const n = 2 ** ((await calculate누적레벨ByUser(member)) - 1) * 10
     await add(member, 'exp', n)
     await add(member, 'r', n)
 
-    await interaction.reply('```diff\n출첵했습니다.\n' + `+ EXP ${n}\n+ R ${n}\n` + '```')
+    await interaction.editReply('```diff\n출첵했습니다.\n' + `+ EXP ${n}\n+ R ${n}\n` + '```')
   }
 }

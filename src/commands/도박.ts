@@ -30,6 +30,8 @@ export class 도박 {
     const userData = await getUserData(member)
     if (배팅 > userData.r) return await block(interaction, '재화 부족', null)
 
+    await interaction.deferReply()
+
     await set도박쿨타임(member)
 
     const 배율 = (() => {
@@ -48,6 +50,6 @@ export class 도박 {
 
     await add(member, 'r', res)
 
-    await interaction.reply('```diff\n' + `x${배율}\n` + '```')
+    await interaction.editReply('```diff\n' + `x${배율}\n` + '```')
   }
 }
