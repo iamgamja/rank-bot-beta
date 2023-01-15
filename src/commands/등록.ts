@@ -9,11 +9,7 @@ import { addUserData } from '../util/set/addUserData'
 
 @Discord()
 export class 등록 {
-  @Slash({ description: '등록합니다.', name: '등록' })
-  async 등록(interaction: CommandInteraction) {
-    const member = interaction.member as GuildMember
-    if (await isUser(member)) return await block(interaction, '이미 등록됨', null)
-
+  async _등록(member: GuildMember) {
     const userCount = Object.keys(await query('select * from user_data')).length
     const newUserData: userData = {
       id: userCount + 1,
@@ -28,6 +24,14 @@ export class 등록 {
       defitem: '없음',
     }
     await addUserData(newUserData)
+  }
+
+  @Slash({ description: '등록합니다.', name: '등록' })
+  async 등록(interaction: CommandInteraction) {
+    const member = interaction.member as GuildMember
+    if (await isUser(member)) return await block(interaction, '이미 등록됨', null)
+
+    await this._등록(member)
     await interaction.reply('✅')
   }
 
@@ -45,20 +49,7 @@ export class 등록 {
     if (!(await isAdmin(interaction.member as GuildMember))) return await block(interaction, '관리자가 아님', null)
     if (await isUser(대상)) return await block(interaction, '이미 등록됨', null)
 
-    const userCount = Object.keys(await query('select * from user_data')).length
-    const newUserData: userData = {
-      id: userCount + 1,
-      userid: 대상.id,
-      tear: 0,
-      level: 1,
-      exp: 0,
-      atk: 1,
-      hp: 1,
-      r: 0,
-      atkitem: '없음',
-      defitem: '없음',
-    }
-    await addUserData(newUserData)
+    await this._등록(대상)
     await interaction.reply('✅')
   }
 }
