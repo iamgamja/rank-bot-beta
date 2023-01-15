@@ -7,7 +7,7 @@
   "main": "build/main.js",
   "scripts": {
     "yab": "node node_modules/add-js-extension/dist/bin.js build --once",
-    "build": "tsc & yarn yab",
+    "build": "tsc && yarn yab",
     "start": "node build/main.js",
     "build:changelog": "npx @discordx/changelog --root=src",
     "dev": "ts-node-esm src/main.ts",

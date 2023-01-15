@@ -1,21 +1,6 @@
-import { Snowflake } from 'discord.js'
-
-type DropItem = { [이름: string]: number } // 이름: 획득확률
-
-type DungeonData = {
-  [name: string]: {
-    channelID: Snowflake
-    체력: number
-    공격력: number
-    획득경험치: number
-    획득R: number
-    드롭아이템: DropItem
-  }
-}
-
-const DUNGEON: DungeonData = {
+const DUNGEON = {
   슬라임: {
-    channelID: '1025355108382421022',
+    channelId: '1025355108382421022',
     체력: 1,
     공격력: 0,
     획득경험치: 1,
@@ -23,7 +8,7 @@ const DUNGEON: DungeonData = {
     드롭아이템: {},
   },
   풀슬라임: {
-    channelID: '1026111522067460106',
+    channelId: '1026111522067460106',
     체력: 3,
     공격력: 2,
     획득경험치: 2,
@@ -31,7 +16,7 @@ const DUNGEON: DungeonData = {
     드롭아이템: {},
   },
   잎슬라임: {
-    channelID: '1026111522067460106',
+    channelId: '1026111522067460106',
     체력: 5,
     공격력: 4,
     획득경험치: 3,
@@ -39,7 +24,7 @@ const DUNGEON: DungeonData = {
     드롭아이템: {},
   },
   나무슬라임: {
-    channelID: '1026119448156966992',
+    channelId: '1026119448156966992',
     체력: 5,
     공격력: 5,
     획득경험치: 4,
@@ -49,7 +34,7 @@ const DUNGEON: DungeonData = {
     },
   },
   숲슬라임: {
-    channelID: '1026119448156966992',
+    channelId: '1026119448156966992',
     체력: 8,
     공격력: 7,
     획득경험치: 6,
@@ -61,7 +46,7 @@ const DUNGEON: DungeonData = {
     },
   },
   작은호수슬라임: {
-    channelID: '1026121469907968051',
+    channelId: '1026121469907968051',
     체력: 8,
     공격력: 7,
     획득경험치: 7,
@@ -74,7 +59,7 @@ const DUNGEON: DungeonData = {
     },
   },
   작은강가슬라임: {
-    channelID: '1026161001407725588',
+    channelId: '1026161001407725588',
     체력: 5,
     공격력: 6,
     획득경험치: 5,
@@ -82,7 +67,7 @@ const DUNGEON: DungeonData = {
     드롭아이템: {},
   },
   작은강가정령: {
-    channelID: '1026161001407725588',
+    channelId: '1026161001407725588',
     체력: 7,
     공격력: 8,
     획득경험치: 7,
@@ -92,7 +77,7 @@ const DUNGEON: DungeonData = {
     },
   },
   강슬라임: {
-    channelID: '1032216362103353384',
+    channelId: '1032216362103353384',
     체력: 9,
     공격력: 8,
     획득경험치: 8,
@@ -100,7 +85,7 @@ const DUNGEON: DungeonData = {
     드롭아이템: {},
   },
   퍼실슬라임: {
-    channelID: '1032216362103353384',
+    channelId: '1032216362103353384',
     체력: 11,
     공격력: 10,
     획득경험치: 10,
@@ -112,7 +97,7 @@ const DUNGEON: DungeonData = {
     },
   },
   퍼실의정령: {
-    channelID: '1032216362103353384',
+    channelId: '1032216362103353384',
     체력: 14,
     공격력: 13,
     획득경험치: 11,
@@ -124,7 +109,7 @@ const DUNGEON: DungeonData = {
     },
   },
   작은언덕의슬라임: {
-    channelID: '1035476140753703012',
+    channelId: '1035476140753703012',
     체력: 10,
     공격력: 9,
     획득경험치: 9,
@@ -132,7 +117,7 @@ const DUNGEON: DungeonData = {
     드롭아이템: {},
   },
   작은언덕정령: {
-    channelID: '1035476140753703012',
+    channelId: '1035476140753703012',
     체력: 15,
     공격력: 14,
     획득경험치: 12,
@@ -142,7 +127,7 @@ const DUNGEON: DungeonData = {
     },
   },
   스톤슬라임: {
-    channelID: '1035476140753703012',
+    channelId: '1035476140753703012',
     체력: 17,
     공격력: 16,
     획득경험치: 13,
@@ -153,7 +138,7 @@ const DUNGEON: DungeonData = {
   },
   // 계절
   겨울슬라임: {
-    channelID: '1026124882746032249',
+    channelId: '1026124882746032249',
     체력: 12,
     공격력: 12,
     획득경험치: 10,
@@ -163,6 +148,6 @@ const DUNGEON: DungeonData = {
       '22 겨울 갑옷': 0.8,
     },
   },
-}
+} as const
 
 export default DUNGEON

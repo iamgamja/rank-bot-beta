@@ -1,17 +1,4 @@
-import { Snowflake } from 'discord.js'
-
-type ShopItemData = {
-  [name: string]: {
-    cost: number // R
-    limit?: [number, number, number] // tear, level, exp
-    get: {
-      role?: Snowflake
-      exp?: number // exp
-    }
-  }
-}
-
-const SHOP_ITEM: ShopItemData = {
+const SHOP_ITEM = {
   도박장이용권: {
     cost: 0,
     limit: [0, 2, 0],
@@ -83,6 +70,6 @@ const SHOP_ITEM: ShopItemData = {
       exp: 42000,
     },
   },
-}
+} as const
 
 export default SHOP_ITEM

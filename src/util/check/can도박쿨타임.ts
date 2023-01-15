@@ -1,18 +1,11 @@
-import { GuildMember, TextChannel } from 'discord.js'
-import ChannelIsNotDungeonChannelError from '../../error/ChannelIsNotDungeonChannelError'
+import { GuildMember } from 'discord.js'
 import UserNotFoundError from '../../error/UserNotFoundError'
-import isDungeonChannel from '../check/isDungeonChannel'
 import isUser from '../check/isUser'
-import query from '../query'
+import get도박쿨타임 from '../get/get도박쿨타임'
 
-export default async function can도박쿨타임(member: GuildMember, channel: TextChannel) {
+export default async function can도박쿨타임(member: GuildMember) {
   if (!(await isUser(member))) throw new UserNotFoundError()
-  if (!isDungeonChannel(channel)) throw new ChannelIsNotDungeonChannelError()
 
-  const res = (await query(`select * from dd_cooltime where userid="${member.id}"`)) as unknown as string[]
-
-  if (res.length === 0) return true // 가능
-
-  const cooltime = +res[0]
+  const cooltime = +(await get도박쿨타임(member))
   return cooltime < Date.now()
 }
