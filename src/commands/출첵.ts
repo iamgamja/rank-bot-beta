@@ -10,7 +10,7 @@ import set출첵쿨타임 from '../util/set/set출첵쿨타임'
 
 @Discord()
 export class 출첵 {
-  @Slash({ description: '출첵합니다.', name: '출첵' })
+  @Slash({ description: '출첵합니다.', name: 'ㅊㅊ' })
   async 출첵(interaction: CommandInteraction) {
     if (interaction.channelId !== '1001389058473345154') return await block(interaction, '잘못된 채널', '1001389058473345154')
     const member = interaction.member as GuildMember
