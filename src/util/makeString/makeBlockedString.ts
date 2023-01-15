@@ -17,6 +17,7 @@ const BlockedString: { [type in BlockedType]: string } = {
   '재화 부족': 'R이 부족합니다.',
   '경험치 부족': '경험치가 부족합니다.',
   '이미 구매함': '이미 구매한 아이템입니다.',
+  약함: '공격력/체력이 부족합니다.',
 }
 
 const BlockedSubString = {
