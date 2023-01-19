@@ -1,5 +1,6 @@
 import { ApplicationCommandOptionType, CommandInteraction } from 'discord.js'
 import { Discord, Slash, SlashOption } from 'discordx'
+import { defer } from '../decorator/defer'
 import query from '../util/query'
 
 query
@@ -7,6 +8,7 @@ query
 @Discord()
 export class Eval {
   @Slash({ description: 'eval', name: 'eval' })
+  @defer
   async eval(
     @SlashOption({
       description: 'code',
@@ -27,6 +29,6 @@ export class Eval {
       }
     })()
 
-    await interaction.reply(result.toString())
+    await interaction.editReply(result.toString())
   }
 }

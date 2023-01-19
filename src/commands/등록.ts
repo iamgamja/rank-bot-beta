@@ -1,5 +1,6 @@
 import { ApplicationCommandOptionType, CommandInteraction, GuildMember } from 'discord.js'
 import { Discord, Slash, SlashOption } from 'discordx'
+import { defer } from '../decorator/defer'
 import { userData } from '../type/userData'
 import block from '../util/block'
 import isAdmin from '../util/check/isAdmin'
@@ -27,15 +28,17 @@ export class 등록 {
   }
 
   @Slash({ description: '등록합니다.', name: '등록' })
+  @defer
   async 등록(interaction: CommandInteraction) {
     const member = interaction.member as GuildMember
     if (await isUser(member)) return await block(interaction, '이미 등록됨', null)
 
     await this._등록(member)
-    await interaction.reply('✅')
+    await interaction.editReply('✅')
   }
 
   @Slash({ description: '[관리자 전용] 다른 사람을 원격으로 등록합니다.', name: '원격등록' })
+  @defer
   async 원격등록(
     @SlashOption({
       description: '등록할 대상입니다.',
@@ -50,6 +53,6 @@ export class 등록 {
     if (await isUser(대상)) return await block(interaction, '이미 등록됨', null)
 
     await this._등록(대상)
-    await interaction.reply('✅')
+    await interaction.editReply('✅')
   }
 }

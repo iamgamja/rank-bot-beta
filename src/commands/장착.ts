@@ -1,5 +1,6 @@
 import { ApplicationCommandOptionType, CommandInteraction, GuildMember } from 'discord.js'
 import { Discord, Slash, SlashChoice, SlashOption } from 'discordx'
+import { defer } from '../decorator/defer'
 import block from '../util/block'
 import isAdmin from '../util/check/isAdmin'
 import isUser from '../util/check/isUser'
@@ -8,6 +9,7 @@ import query from '../util/query'
 @Discord()
 export class 장착 {
   @Slash({ description: '[관리자 전용] 무기/방어구를 장착시킵니다.', name: '장착' })
+  @defer
   async 장착(
     @SlashChoice({ name: '무기', value: 'atkitem' })
     @SlashChoice({ name: '방어구', value: 'defitem' })
@@ -44,6 +46,6 @@ export class 장착 {
     // await editUserInfoMsg()
     /** @todo 완성되면 이거 주석 해제 */
 
-    await interaction.reply('✅')
+    await interaction.editReply('✅')
   }
 }

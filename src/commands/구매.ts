@@ -1,6 +1,7 @@
 import { ApplicationCommandOptionType, CommandInteraction, GuildMember, Role } from 'discord.js'
 import { Discord, Slash, SlashChoice, SlashOption } from 'discordx'
 import SHOP_ITEM from '../data/shopItem'
+import { defer } from '../decorator/defer'
 import add from '../util/add'
 import block from '../util/block'
 import isUser from '../util/check/isUser'
@@ -9,6 +10,7 @@ import getUserData from '../util/get/getUserData'
 @Discord()
 export class 구매 {
   @Slash({ description: '아이템을 구매합니다.', name: '구매' })
+  @defer
   async 구매(
     @SlashChoice(...Object.keys(SHOP_ITEM).map((name) => ({ name: name, value: name }))) // 모든 아이템 선택지에 넣기
     @SlashOption({
@@ -45,8 +47,6 @@ export class 구매 {
     }
 
     // 구매
-    await interaction.deferReply()
-
     await add(member, 'r', -target.cost)
 
     if ('role' in target.get) {

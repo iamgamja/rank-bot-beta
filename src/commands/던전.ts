@@ -1,6 +1,7 @@
 import { ApplicationCommandOptionType, CommandInteraction, GuildMember, TextChannel } from 'discord.js'
 import { Discord, Slash, SlashChoice, SlashOption } from 'discordx'
 import DUNGEON from '../data/dungeon'
+import { defer } from '../decorator/defer'
 import add from '../util/add'
 import block from '../util/block'
 import can던전쿨타임 from '../util/check/can던전쿨타임'
@@ -11,6 +12,7 @@ import get던전쿨타임 from '../util/get/get던전쿨타임'
 @Discord()
 export class 던전 {
   @Slash({ description: '몬스터를 처치합니다.', name: '처치' })
+  @defer
   async 처치(
     @SlashChoice(...Object.keys(DUNGEON).map((name) => ({ name: name, value: name })))
     @SlashOption({
@@ -37,8 +39,6 @@ export class 던전 {
     if (!can공격) return await block(interaction, '약함', null)
 
     // 처치
-    await interaction.deferReply()
-
     const items: string[] = []
     // 아이템 획득
     for (const item of Object.entries(target.드롭아이템)) {
