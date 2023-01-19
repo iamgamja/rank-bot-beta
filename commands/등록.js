@@ -12,6 +12,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 import { ApplicationCommandOptionType, CommandInteraction, GuildMember } from 'discord.js';
 import { Discord, Slash, SlashOption } from 'discordx';
+import { defer } from '../decorator/defer.js';
 import block from '../util/block.js';
 import isAdmin from '../util/check/isAdmin.js';
 import isUser from '../util/check/isUser.js';
@@ -39,7 +40,7 @@ let 등록 = class 등록 {
         if (await isUser(member))
             return await block(interaction, '이미 등록됨', null);
         await this._등록(member);
-        await interaction.reply('✅');
+        await interaction.editReply('✅');
     }
     async 원격등록(대상, interaction) {
         if (!(await isAdmin(interaction.member)))
@@ -47,17 +48,19 @@ let 등록 = class 등록 {
         if (await isUser(대상))
             return await block(interaction, '이미 등록됨', null);
         await this._등록(대상);
-        await interaction.reply('✅');
+        await interaction.editReply('✅');
     }
 };
 __decorate([
     Slash({ description: '등록합니다.', name: '등록' }),
+    defer,
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [CommandInteraction]),
     __metadata("design:returntype", Promise)
 ], 등록.prototype, "\uB4F1\uB85D", null);
 __decorate([
     Slash({ description: '[관리자 전용] 다른 사람을 원격으로 등록합니다.', name: '원격등록' }),
+    defer,
     __param(0, SlashOption({
         description: '등록할 대상입니다.',
         name: '대상',

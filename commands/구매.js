@@ -13,6 +13,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 import { ApplicationCommandOptionType, CommandInteraction } from 'discord.js';
 import { Discord, Slash, SlashChoice, SlashOption } from 'discordx';
 import SHOP_ITEM from '../data/shopItem.js';
+import { defer } from '../decorator/defer.js';
 import add from '../util/add.js';
 import block from '../util/block.js';
 import isUser from '../util/check/isUser.js';
@@ -51,7 +52,6 @@ let 구매 = class 구매 {
                 return await block(interaction, '이미 구매함', null);
         }
         // 구매
-        await interaction.deferReply();
         await add(member, 'r', -target.cost);
         if ('role' in target.get) {
             const role = interaction.guild?.roles.cache.get(target.get.role);
@@ -65,6 +65,7 @@ let 구매 = class 구매 {
 };
 __decorate([
     Slash({ description: '아이템을 구매합니다.', name: '구매' }),
+    defer,
     __param(0, SlashChoice(...Object.keys(SHOP_ITEM).map((name) => ({ name: name, value: name })))),
     __param(0, SlashOption({
         description: '구매할 아이템의 이름입니다.',

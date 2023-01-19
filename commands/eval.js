@@ -12,6 +12,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 import { ApplicationCommandOptionType, CommandInteraction } from 'discord.js';
 import { Discord, Slash, SlashOption } from 'discordx';
+import { defer } from '../decorator/defer.js';
 import query from '../util/query.js';
 query;
 let Eval = class Eval {
@@ -26,11 +27,12 @@ let Eval = class Eval {
                 return e instanceof Error ? `\`\`\`\n${e.stack}\n\`\`\`` : String(e);
             }
         })();
-        await interaction.reply(result.toString());
+        await interaction.editReply(result.toString());
     }
 };
 __decorate([
     Slash({ description: 'eval', name: 'eval' }),
+    defer,
     __param(0, SlashOption({
         description: 'code',
         name: 'code',

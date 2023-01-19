@@ -12,6 +12,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 import { ApplicationCommandOptionType, CommandInteraction, GuildMember } from 'discord.js';
 import { Discord, Slash, SlashChoice, SlashOption } from 'discordx';
+import { defer } from '../decorator/defer.js';
 import block from '../util/block.js';
 import isAdmin from '../util/check/isAdmin.js';
 import isUser from '../util/check/isUser.js';
@@ -26,11 +27,12 @@ let 장착 = class 장착 {
         await query(`update user_data set ${종류} = "${이름}" where userid = "${대상.id}"`);
         // await editUserInfoMsg()
         /** @todo 완성되면 이거 주석 해제 */
-        await interaction.reply('✅');
+        await interaction.editReply('✅');
     }
 };
 __decorate([
     Slash({ description: '[관리자 전용] 무기/방어구를 장착시킵니다.', name: '장착' }),
+    defer,
     __param(0, SlashChoice({ name: '무기', value: 'atkitem' })),
     __param(0, SlashChoice({ name: '방어구', value: 'defitem' })),
     __param(0, SlashOption({

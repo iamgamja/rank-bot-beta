@@ -13,6 +13,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 import { ApplicationCommandOptionType, CommandInteraction } from 'discord.js';
 import { Discord, Slash, SlashChoice, SlashOption } from 'discordx';
 import DUNGEON from '../data/dungeon.js';
+import { defer } from '../decorator/defer.js';
 import add from '../util/add.js';
 import block from '../util/block.js';
 import can던전쿨타임 from '../util/check/can던전쿨타임.js';
@@ -40,7 +41,6 @@ let 던전 = class 던전 {
         if (!can공격)
             return await block(interaction, '약함', null);
         // 처치
-        await interaction.deferReply();
         const items = [];
         // 아이템 획득
         for (const item of Object.entries(target.드롭아이템)) {
@@ -57,6 +57,7 @@ let 던전 = class 던전 {
 };
 __decorate([
     Slash({ description: '몬스터를 처치합니다.', name: '처치' }),
+    defer,
     __param(0, SlashChoice(...Object.keys(DUNGEON).map((name) => ({ name: name, value: name })))),
     __param(0, SlashOption({
         description: '처치할 몬스터의 이름입니다.',

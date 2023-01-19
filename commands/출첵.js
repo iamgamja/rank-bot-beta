@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { CommandInteraction } from 'discord.js';
 import { Discord, Slash } from 'discordx';
+import { defer } from '../decorator/defer.js';
 import add from '../util/add.js';
 import block from '../util/block.js';
 import { calculate누적레벨ByUser } from '../util/calculate누적레벨.js';
@@ -25,7 +26,6 @@ let 출첵 = class 출첵 {
             return await block(interaction, '등록되지 않음', null);
         if (!(await can출첵쿨타임(member)))
             return await block(interaction, '출첵 쿨타임', await get출첵쿨타임(member));
-        await interaction.deferReply();
         await set출첵쿨타임(member);
         const n = 2 ** ((await calculate누적레벨ByUser(member)) - 1) * 10;
         await add(member, 'exp', n);
@@ -35,6 +35,7 @@ let 출첵 = class 출첵 {
 };
 __decorate([
     Slash({ description: '출첵합니다.', name: 'ㅊㅊ' }),
+    defer,
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [CommandInteraction]),
     __metadata("design:returntype", Promise)
