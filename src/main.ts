@@ -1,9 +1,18 @@
 import 'dotenv/config'
 
 import { dirname, importx } from '@discordx/importer'
-import { ChannelType, Interaction } from 'discord.js'
+import { ChannelType, Interaction, WebhookClient } from 'discord.js'
 import { IntentsBitField } from 'discord.js'
 import { Client } from 'discordx'
+
+if (!process.env.webhookurl) throw new Error('웨푹불가')
+const wb = new WebhookClient({ url: process.env.webhookurl })
+
+process.on('uncaughtException', async (err) => {
+  console.error(err)
+  await wb.send(`\`\`\`\n${err.stack ?? err.toString()}\n\`\`\``)
+  process.exit(1)
+})
 
 export const bot = new Client({
   // To use only guild command
