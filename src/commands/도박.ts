@@ -1,5 +1,6 @@
 import { ApplicationCommandOptionType, CommandInteraction, GuildMember } from 'discord.js'
 import { Discord, Slash, SlashOption } from 'discordx'
+import { defer } from '../decorator/defer'
 import add from '../util/add'
 import block from '../util/block'
 import can도박쿨타임 from '../util/check/can도박쿨타임'
@@ -11,6 +12,7 @@ import set도박쿨타임 from '../util/set/set도박쿨타임'
 @Discord()
 export class 도박 {
   @Slash({ description: '도박을 진행합니다.', name: '도박' })
+  @defer
   async 도박(
     @SlashOption({
       description: '배팅할 R입니다.',
@@ -29,8 +31,6 @@ export class 도박 {
     if (배팅 < 0) return await block(interaction, '배팅 금액이 음수', null)
     const userData = await getUserData(member)
     if (배팅 > userData.r) return await block(interaction, '재화 부족', null)
-
-    await interaction.deferReply()
 
     await set도박쿨타임(member)
 
