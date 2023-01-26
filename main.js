@@ -3,6 +3,7 @@ import { dirname, importx } from '@discordx/importer';
 import { ChannelType, WebhookClient } from 'discord.js';
 import { IntentsBitField } from 'discord.js';
 import { Client } from 'discordx';
+import editUserInfoMsg from './util/editUserInfoMsg.js';
 if (!process.env.webhookurl)
     throw new Error('웨푹불가');
 const wb = new WebhookClient({ url: process.env.webhookurl });
@@ -41,6 +42,10 @@ bot.once('ready', async () => {
     await bot.clearApplicationCommands();
     // 그 다음 추가하기
     await bot.initApplicationCommands();
+    // 1시간마다 userinfomsg 수정하기
+    setInterval(async () => {
+        await editUserInfoMsg();
+    }, 1 * 60 * 60 * 1000);
     console.log('Bot started');
     const logchannel = bot.channels.cache.get('1061497104696098836'); // log5
     if (!logchannel) {

@@ -16,6 +16,7 @@ import { defer } from '../decorator/defer.js';
 import block from '../util/block.js';
 import isAdmin from '../util/check/isAdmin.js';
 import isUser from '../util/check/isUser.js';
+import editUserInfoMsg from '../util/editUserInfoMsg.js';
 import query from '../util/query.js';
 let 장착 = class 장착 {
     async 장착(종류, 대상, 이름, interaction) {
@@ -25,8 +26,7 @@ let 장착 = class 장착 {
             return await block(interaction, '등록되지 않음', null);
         // await add(대상, 'atk', 수치)
         await query(`update user_data set ${종류} = "${이름}" where userid = "${대상.id}"`);
-        // await editUserInfoMsg()
-        /** @todo 완성되면 이거 주석 해제 */
+        await editUserInfoMsg();
         await interaction.editReply('✅');
     }
 };

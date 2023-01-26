@@ -1,3 +1,4 @@
+import editUserInfoMsg from '../editUserInfoMsg.js';
 import query from '../query.js';
 export async function addUserData(userData) {
     await query(`
@@ -15,6 +16,5 @@ export async function addUserData(userData) {
       "${userData.defitem}"
     )
   `);
-    // await editUserInfoMsg()
-    /** @todo 완성되면 이거 주석 해제 */
+    await editUserInfoMsg();
 }

@@ -1,5 +1,6 @@
 import UserNotFoundError from '../../error/UserNotFoundError.js';
 import isUser from '../check/isUser.js';
+import editUserInfoMsg from '../editUserInfoMsg.js';
 import query from '../query.js';
 export async function setUserData(member, userData) {
     if (!(await isUser(member)))
@@ -17,6 +18,5 @@ export async function setUserData(member, userData) {
       defitem="${userData.defitem}"
     where userid = "${member.id}"
   `);
-    // await editUserInfoMsg()
-    /** @todo 완성되면 이거 주석 해제 */
+    await editUserInfoMsg();
 }
