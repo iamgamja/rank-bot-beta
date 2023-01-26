@@ -2,6 +2,7 @@ import { GuildMember } from 'discord.js'
 import UserNotFoundError from '../../error/UserNotFoundError'
 import { userData } from '../../type/userData'
 import isUser from '../check/isUser'
+import editUserInfoMsg from '../editUserInfoMsg'
 import query from '../query'
 
 export async function setUserData(member: GuildMember, userData: userData) {
@@ -21,6 +22,5 @@ export async function setUserData(member: GuildMember, userData: userData) {
     where userid = "${member.id}"
   `)
 
-  // await editUserInfoMsg()
-  /** @todo 완성되면 이거 주석 해제 */
+  await editUserInfoMsg()
 }

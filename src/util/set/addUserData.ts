@@ -1,4 +1,5 @@
 import { userData } from '../../type/userData'
+import editUserInfoMsg from '../editUserInfoMsg'
 import query from '../query'
 
 export async function addUserData(userData: userData) {
@@ -18,6 +19,5 @@ export async function addUserData(userData: userData) {
     )
   `)
 
-  // await editUserInfoMsg()
-  /** @todo 완성되면 이거 주석 해제 */
+  await editUserInfoMsg()
 }

@@ -4,6 +4,7 @@ import { defer } from '../decorator/defer'
 import block from '../util/block'
 import isAdmin from '../util/check/isAdmin'
 import isUser from '../util/check/isUser'
+import editUserInfoMsg from '../util/editUserInfoMsg'
 import query from '../util/query'
 
 @Discord()
@@ -43,8 +44,7 @@ export class 장착 {
     // await add(대상, 'atk', 수치)
     await query(`update user_data set ${종류} = "${이름}" where userid = "${대상.id}"`)
 
-    // await editUserInfoMsg()
-    /** @todo 완성되면 이거 주석 해제 */
+    await editUserInfoMsg()
 
     await interaction.editReply('✅')
   }
